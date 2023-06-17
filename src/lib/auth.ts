@@ -1,4 +1,4 @@
-import { NextAuthOptions } from "next-auth";
+import { NextAuthOptions, getServerSession } from "next-auth";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import GoogleProvider from "next-auth/providers/google";
 import { db } from "./db";
@@ -59,7 +59,10 @@ export const authOptions: NextAuthOptions = {
       };
     },
     redirect() {
+      console.log("auth was successfull, redirecting to the /");
       return "/";
     },
   },
 };
+
+export const getAuthSession = () => getServerSession(authOptions);
