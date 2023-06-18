@@ -13,4 +13,6 @@ const UserAuthForm: FC<UserAuthFormProps> = ({ className, ...props }) => {
 
 Here, since the `UserAuthFormProps` is extending the `React.HTMLAttributes<HTMLDivElement>`, we can pass in properties specific to `div` like `className`, `aria-label`, etc.
 
-
+## Page intercepts and parallel route 
+- Parallel routes are just the routes which are displayed together. 
+- In the `@authModal`, we have created intercepted route for the sign-in page. Whenever we click on the sign-in page, that intercepted route would be displayed and when we refresh the page, the actual page would be displayed.
