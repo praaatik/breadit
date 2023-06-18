@@ -10,9 +10,7 @@ const page: FC<PageProps> = () => {
             <div className='relative bg-white w-full h-fit py-20 px-2 rounded-lg'>
                 <div className='absolute top-4 right-4'>
                     <CloseModal />
-
                 </div>
-
                 <SignIn />
             </div>
         </div>
