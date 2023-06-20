@@ -4,11 +4,31 @@ import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input'
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
+import { useMutation } from "@tanstack/react-query"
+import { CreateSubredditPayload } from '@/lib/validators/subreddit';
 
 function page() {
 
-  const [input, inputSet] = useState(''); 
-  const router = useRouter(); 
+  const [input, inputSet] = useState('');
+  const router = useRouter();
+  const { mutate: createCommunity, isLoading } = useMutation({
+    mutationFn: async () => {
+
+      const payload: CreateSubredditPayload = {
+        name: input
+      }
+
+      const response = await fetch("/api/subreddit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload),
+      });
+      console.log(response);
+
+    }
+  })
 
   return (
     <div className='container flex items-center h-full max-w-3xl mx-auto'>
@@ -29,8 +49,9 @@ function page() {
               r/
             </p>
             <Input
-              // value={input}
-              // onChange={(e) => setInput(e.target.value)}
+              value={input}
+              placeholder='Enter community name'
+              onChange={(e) => inputSet(e.target.value)}
               className='pl-6'
             />
           </div>
@@ -45,9 +66,8 @@ function page() {
           </Button>
           <Button
             // isLoading={isLoading}
-            // disabled={input.length === 0}
-            // onClick={() => createCommunity()}>
-            >
+            disabled={input.length === 0}
+            onClick={() => createCommunity()}>
             Create Community
           </Button>
         </div>
