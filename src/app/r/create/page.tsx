@@ -8,7 +8,6 @@ import { useMutation } from "@tanstack/react-query"
 import { CreateSubredditPayload } from '@/lib/validators/subreddit';
 import { useCustomToasts } from '@/hooks/use-custom-toast';
 import { toast } from "@/hooks/use-toast"
-import { error } from 'console';
 
 function page() {
 
