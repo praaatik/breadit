@@ -1,6 +1,7 @@
 import { Home as HomeIcon } from 'lucide-react'
 import { buttonVariants } from '@/components/ui/Button'
-import Link from 'next/link'
+// import Link from 'next/link'
+
 
 export default function Home() {
   return <div>
